@@ -4,7 +4,7 @@
  
  1) shuf
   https://en.wikipedia.org/wiki/Shuf
- 2) ONT_FineTuner_v2.1.sh
+ 2) ONT_FineTuner.sh
  This is a module shell script to run the model fine tuning pipeline from this repository.
  ``` sh
  git clone XXXXX
