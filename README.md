@@ -5,10 +5,11 @@
  1) shuf
   https://en.wikipedia.org/wiki/Shuf
  2) ONT_FineTuner.sh
- This is a module shell script to run the model fine tuning pipeline from this repository.
+ This is a module shell script to run the model fine tuning pipeline from this repository. Add this directory to your $PATH.
  ``` sh
- git clone XXXXX
- chmod u+x ONT_FineTuner_v2.1.sh
+ git clone https://github.com/gottsc33/ONT_FineTuner.git
+ cd ONT_FineTuner
+ chmod u+x ONT_FineTuner.sh
  ```
  3) CTC_merger.py
  This is a required accessory script that needs to be save in the working directory.
@@ -38,7 +39,7 @@
  ``` sh
  conda activate bonito
  
- ONT_FineTuner_v2.1.sh reference_genome ./Pod5_directory ONT_model_name threads
+ ONT_FineTuner.sh reference_genome ./Pod5_directory ONT_model_name threads
  ```
  ## Example
  ``` sh
@@ -47,7 +48,7 @@
  shuf -n 307 -e * | xargs -i mv {} ../validation/
  cd ..
  conda activate bonito
- ONT_FineTuner_v2.1.sh drMalDom_FujiDip ./Pod5/ dna_r10.4.1_e8.2_400bps_hac@v5.0.0 30 >> log_file 2>> err_file
+ ONT_FineTuner.sh drMalDom_FujiDip ./Pod5/ dna_r10.4.1_e8.2_400bps_hac@v5.0.0 30 >> log_file 2>> err_file
  ```
  
  ## Dorado comparisons
