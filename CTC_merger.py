@@ -11,7 +11,7 @@
 #       "base_data_dir"                                                        #
 #                                                                              #
 #       Edited and integrated into ARS fine tuning pipeline by                 #
-#       Chris Gottschalk 3/18/25   v2.1                                        #
+#       Chris Gottschalk 3/18/25  v2.2                                         #
 ################################################################################
 #!/usr/bin/env python3
 
@@ -60,10 +60,20 @@ def combine_references(base_data_dir, ref_len_array):
 
     ref_array = []
     for old_array in old_ref_array_list:
+        # Determine the shape of the reference array
+        rows, cols = old_array.shape
+        
         # Zero-fill the new array to 'max_ref_len' in the second dimension
-        new_array = np.zeros((old_array.shape[0], max_ref_len), dtype=old_array.dtype)
-        new_array[:, :old_array.shape[1]] = old_array
+        new_array = np.zeros((rows, max_ref_len), dtype=old_array.dtype)
+        
+        # Copy data from old_array to new_array, trimming or padding as necessary
+        if cols <= max_ref_len:
+            new_array[:, :cols] = old_array  # Zero padding if old_array is smaller
+        else:
+            new_array[:, :max_ref_len] = old_array[:, :max_ref_len]  # Trim if old_array is larger
+        
         ref_array.append(new_array)
+    
     # Stack all arrays vertically
     ref_array = np.vstack(ref_array)
     np.save(f"{base_data_dir}/{ref_filename}.npy", ref_array)
