@@ -85,6 +85,7 @@ https://github.com/wdecoster/chopper
  ## Gottschalk et al., 2025. Development of Rosaceae Crop-Specific Nanopore Models for Community Use Through the Genome Database for Rosaceae.
  ## Software used:
  Wouter De Coster, Rosa Rademakers, NanoPack2: population-scale evaluation of long-read sequencing data, Bioinformatics, Volume 39, Issue 5, May 2023, btad311, https://doi.org/10.1093/bioinformatics/btad311
+ 
  Petr Danecek, James K Bonfield, Jennifer Liddle, John Marshall, Valeriu Ohan, Martin O Pollard, Andrew Whitwham, Thomas Keane, Shane A McCarthy, Robert M Davies, Heng Li, Twelve years of SAMtools and BCFtools, GigaScience, Volume 10, Issue 2, February 2021, giab008, https://doi.org/10.1093/gigascience/giab008
  ## Fuji genome:
  Li, W., Chu, C., Li, H. et al. Near-gapless and haplotype-resolved apple genomes provide insights into the genetic basis of rootstock-induced dwarfing. Nat Genet (2024) https://doi.org/10.1038/s41588-024-01657-2
