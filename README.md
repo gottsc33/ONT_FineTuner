@@ -58,10 +58,12 @@ https://github.com/wdecoster/chopper
  shuf -n 307 -e * | xargs -i mv {} ../validation/
  cd ..
  conda activate bonito
+
+ #here we will fine-tune using the latest available HAC model dna_r10.4.1_e8.2_400bps_hac@v5.0.0
  ONT_FineTuner.sh drMalDom_FujiDip ./Pod5/ dna_r10.4.1_e8.2_400bps_hac@v5.0.0 30 >> log_file 2>> err_file
  ```
  
- ## Dorado comparisons
+ ## Example run of using new fine-tuned model with Dorado and comparing with the standard ONT model dna_r10.4.1_e8.2_400bps_hac@v5.0.0
  ``` sh
  #running simultaneously on a two GPU system
  dorado basecaller -x cuda:0 ./drMalDom_FujiDip_dna_r10.4.1_e8.2_400bps_hac@v5.0.0 ./evaluation > ./finetuned_basecalls_dorado.bam #running on GPU 0
