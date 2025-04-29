@@ -1,11 +1,11 @@
 ################################################################################
-#             __  _________  ___      ___   ___  ____                          #
-#           / / / / __/ _ \/ _ |____/ _ | / _ \/ __/                           #
-#         / /_/ /\ \/ // / __ /___/ __ |/ , _/\ \                              #
+#          __  _________  ___      ___   ___  ____                             #
+#         / / / / __/ _ \/ _ |____/ _ | / _ \/ __/                             #
+#        / /_/ /\ \/ // / __ /___/ __ |/ , _/\ \                               #
 #        \____/___/____/_/ |_|  /_/ |_/_/|_/___/                               #
-#           ____  _  ________  _____            ______                         #
-#         / __ \/ |/ /_  __/ / __(_)__  ___   /_  __/_ _____  ___ ____         #
-#       / /_/ /    / / /   / _// / _ \/ -_)   / / / // / _ \/ -_) __/          #
+#        ____  _  ________  _____            ______                            #
+#       / __ \/ |/ /_  __/ / __(_)__  ___   /_  __/_ _____  ___ ____           #
+#      / /_/ /    / / /   / _// / _ \/ -_)   / / / // / _ \/ -_) __/           #
 #      \____/_/|_/ /_/   /_/ /_/_//_/\__/   /_/  \_,_/_//_/\__/_/              #
 #                                                                              #
 #          USDA-ARS Oxford Nanopore Technologies Model FineTuner               #
@@ -79,6 +79,7 @@ show_progress() {
 for file in $shuf_files; do
   if [ -f "$file" ]; then
     # Create a new subdirectory if necessary
+    # Change the number to correspond to number of pod5 files to split into each subdirectory. For example, if your pod5's are >16 Gb, set the value to 1. If your pod5s are 200 Mb, keep at 25.
     if (( counter % 25 == 0 )); then
       sub_dir="$TARGET_DIR/dir_$dir_counter"
       mkdir -p "$sub_dir"
