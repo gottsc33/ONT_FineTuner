@@ -33,7 +33,7 @@
  ``` sh
  wget https://www.rosaceae.org/rosaceae_downloads/Malus_x_domestica/drMalDom_FujiDip.fa.fa.gz
  ```
- ```
+ 
  6) Processing and QC programs
 https://github.com/wdecoster/NanoPlot
 https://github.com/wdecoster/NanoComp
