@@ -81,7 +81,7 @@ https://github.com/wdecoster/chopper
  NanoComp -t 30 -o comparison --fastq basecalls_dorado_filt.fq.gz finetuned_basecalls_dorado_filt.fq.gz --names ONT_std_model finetuned_model
  ```
 
- ## Utilies scripts
+ ## Utilities scripts
  ``` sh
  #The Training_read_counter.py script is a quick utility tool to search within the subdirectory structure created by ONT_FineTuner.sh to count the number of reads used in the training dataset. The 
  #Its usage is as follows:
