@@ -22,8 +22,22 @@
  pip install --upgrade pip
  pip install ont-bonito
  ```
- 5) For this example let's use the Fuji Diploid genome
- The resulting two haplomes were edited to differentiate sequence headers [e.g. Chr01A = hap_A] and to remove any redunancy in the naming of unanchored scaffolds/contigs.
+ 5) Processing and QC programs
+https://github.com/wdecoster/NanoPlot
+https://github.com/wdecoster/NanoComp
+https://github.com/wdecoster/chopper
+  ``` sh
+ conda install -c bioconda chopper samtools Nanoplot Nanocomp
+ ```
+ 
+ ## Usage
+ ``` sh
+ conda activate bonito
+ 
+ ONT_FineTuner.sh reference_genome ./Pod5_directory ONT_model_name threads
+ ```
+ ## Example
+ Let's use the Fuji Diploid genome. The resulting two haplomes were edited to differentiate sequence headers [e.g. Chr01A = hap_A] and to remove any redunancy in the naming of unanchored scaffolds/contigs.
  
  ``` sh
  wget https://www.rosaceae.org/rosaceae_downloads/Malus_x_domestica/Fuji_cau_v1.0.a2/assembly/Fuji_hap_A.Chr.fa.gz
@@ -33,33 +47,19 @@
  ``` sh
  wget https://www.rosaceae.org/rosaceae_downloads/Malus_x_domestica/drMalDom_FujiDip.fa.fa.gz
  ```
+ Randomly split sequencing run in half for training and validation. You will need to change the number following the -n flag in shuf to split your dataset accordingly. 
+ **The pod5 file size and total number are important**
  
- 6) Processing and QC programs
-https://github.com/wdecoster/NanoPlot
-https://github.com/wdecoster/NanoComp
-https://github.com/wdecoster/chopper
-  ``` sh
- conda install -c bioconda chopper samtools Nanoplot Nanocomp
- ```
+ **Note:** for our RTX6000 and RTX4500 (both are 24 GB models) we can input a max pod5 file size around 16 GB (or a total of 16 GB between multiple pod5s), so plan accordingly.
 
- 
- ## Usage
  ``` sh
- conda activate bonito
- 
- ONT_FineTuner.sh reference_genome ./Pod5_directory ONT_model_name threads
- ```
- ## Example
- ``` sh
- #Randomly split sequencing run in half for training and validation. You will need to change the number following the -n flag in shuf to split your dataset accordingly (pod5 file size and total number are important)
- #Note for our RTX6000 and RTX4500 (both are 24 GB models) we can input a max pod5 file size around 16 GB (or a total of 16 GB between multiple pod5s), so plan accordingly.
-
  cd ./Pod5
  shuf -n 307 -e * | xargs -i mv {} ../validation/
  cd ..
  conda activate bonito
-
- #here we will fine-tune using the latest available HAC model dna_r10.4.1_e8.2_400bps_hac@v5.0.0
+ ```
+ Fine-tune using the latest available HAC model dna_r10.4.1_e8.2_400bps_hac@v5.0.0
+ ``` sh
  ONT_FineTuner.sh drMalDom_FujiDip ./Pod5/ dna_r10.4.1_e8.2_400bps_hac@v5.0.0 30 >> log_file 2>> err_file
  ```
  
@@ -82,9 +82,9 @@ https://github.com/wdecoster/chopper
  ```
 
  ## Utilities scripts
+ The Training_read_counter.py script is a quick utility tool to search within the subdirectory structure created by ONT_FineTuner.sh to count the number of reads used in the training dataset. 
+ Its usage is as follows:
  ``` sh
- #The Training_read_counter.py script is a quick utility tool to search within the subdirectory structure created by ONT_FineTuner.sh to count the number of reads used in the training dataset. The 
- #Its usage is as follows:
  python3 Training_read_counter.py ./subdirectories > reads_used_4_training.txt
  ```
  
