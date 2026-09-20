@@ -1,0 +1,4 @@
+sample_id,reads
+apple_01,/absolute/path/to/apple_01/pod5
+apple_02,/absolute/path/to/apple_02/pod5
+apple_03,/absolute/path/to/apple_03/pod5
