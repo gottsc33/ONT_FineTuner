@@ -1,4 +1,11 @@
 # Development of a Fine Tuned Oxford Nanopore Tech Basecalling model for Rosaceae Crops
+
+## Experimental branch
+
+1) Nextflow implementation - actively testing
+
+2) Conda implementation - actively testing
+
  ## Requirements:
  
  1) shuf
